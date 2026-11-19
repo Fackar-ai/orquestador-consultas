@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -r requirements.txt -r requirements-dev.txt
+      - run: pytest -q
+      - name: Demo de punta a punta (sin esperas)
+        env:
+          DEMO_FACTOR_LATENCIA: "0"
+          DEMO_PROB_FALLO: "0"
+        run: python main.py --cedula 1000000001 --fuentes todas --nombre "NOMBRE APELLIDO"

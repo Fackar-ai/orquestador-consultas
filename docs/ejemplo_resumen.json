@@ -1,0 +1,19 @@
+{
+  "cedula": "10********",
+  "fuentes_pedidas": ["transito"],
+  "inicio": "2026-11-19T00:21:29",
+  "segundos_total": 57.1,
+  "carpeta": "salida/10********_20261119_002129",
+  "exitosas": ["transito"],
+  "fallidas": [],
+  "resultados": {
+    "transito": {
+      "estado": "EXITOSO",
+      "ruta": "salida/10********_20261119_002129/transito_10********.pdf",
+      "motivo": "",
+      "paz_y_salvo": false,
+      "intentos": 2,
+      "segundos": 57.1
+    }
+  }
+}

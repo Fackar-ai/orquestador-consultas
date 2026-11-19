@@ -1,0 +1,22 @@
+# Ejecuciones reales contra los portales (19/11/2026), una fuente por ejecución.
+# Datos personales enmascarados, rutas abreviadas y nombres de fuente sustituidos por genéricos.
+
+$ python main.py --cedula 10******** --fuentes fiscal
+✅ fiscal        EXITOSO                  (1.4 s, 1 intento/s)   fiscal_10********.pdf
+
+$ python main.py --cedula 10******** --fuentes transito
+[transito] PAGINA_CAIDA -> reintento 2/2 en 5 s
+✅ transito      EXITOSO                  (57.1 s, 2 intento/s)  transito_10********.pdf
+
+$ python main.py --cedula 10******** --fuentes judicial
+[captcha] Resuelto en 14.6 s (2 consulta(s)).
+✅ judicial      EXITOSO                  (17.6 s, 1 intento/s)  judicial_10********.pdf
+
+$ python main.py --cedula 10******** --fuentes disciplinaria --nombre "******** ****** *******"
+   -> respuesta (CODIGO_ARITMETICA): 7
+✅ disciplinaria EXITOSO                  (4.0 s, 1 intento/s)   disciplinaria_10********.pdf
+
+# Prueba del control de calidad: respuesta incorrecta a propósito a la pregunta de verificación.
+# El portal devolvió una página genérica (no un certificado). Antes se habría entregado como EXITOSO:
+⚠️ AVISO: la respuesta no trae el bloque del certificado; revisar el PDF
+# Con la validación activada, ese caso pasa a RESPUESTA_RECHAZADA y se reintenta con otra pregunta.
